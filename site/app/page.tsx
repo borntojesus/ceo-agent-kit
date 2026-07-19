@@ -123,6 +123,9 @@ export default function Home() {
           <div className="sec-head">
             <span className="sec-num">03</span>
             <h2 className="sec-title">Юзкейси</h2>
+            <Link href="/use-cases/" className="sec-more">
+              детально →
+            </Link>
           </div>
           <div className="grid-3">
             {USE_CASES.map((u) => {

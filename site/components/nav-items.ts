@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   BookMarked,
   BookOpenText,
+  Lightbulb,
   CalendarCheck,
   Github,
   House,
@@ -26,6 +27,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: "Кіт",
     items: [
       { href: "/checklist/", label: "Чеклист", icon: ListChecks },
+      { href: "/use-cases/", label: "Юзкейси", icon: Lightbulb },
       { href: "/docs/", label: "Документація", icon: BookOpenText },
       { href: "/prompts/", label: "Промпти", icon: Terminal },
       { href: "/glossary/", label: "Глосарій", icon: BookMarked },
