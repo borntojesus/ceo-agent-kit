@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from 'astro:content';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('modules');
+  const sorted = entries
+    .map((e) => ({ entry: e, slug: e.id.split('/')[0] }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+  return sorted.map(({ entry, slug }, i) => ({
+    params: { slug },
+    props: {
+      entry,
+      prev: i > 0 ? sorted[i - 1].slug : null,
+      next: i < sorted.length - 1 ? sorted[i + 1].slug : null,
+    },
+  }));
+}
+
+const { entry, prev, next } = Astro.props;
+const { slug } = Astro.params;
+const { Content } = await render(entry);
+const titleLine =
+  (entry.body ?? '').split('\n').find((l) => l.startsWith('# ')) ?? slug;
+const title = titleLine.replace(/^#\s*/, '');
+const repoBase = `https://github.com/borntojesus/ceo-agent-kit/blob/main/modules/${slug}`;
+---
+
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · CEO Agent Kit</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="crumbs">
+        <a href="/">← До чеклиста</a>
+      </nav>
+      <article class="module">
+        <Content />
+        <p>
+          Файли промптів цього модуля:
+          <a href={repoBase}>відкрити на GitHub</a> (промпт копіюється звідти цілком).
+        </p>
+        <button class="mark-done" data-slug={slug}>Позначити виконаним</button>
+      </article>
+      <div class="pager">
+        <span>{prev && <a href={`/modules/${prev}/`}>← Модуль {prev.slice(0, 2)}</a>}</span>
+        <span>{next && <a href={`/modules/${next}/`}>Модуль {next.slice(0, 2)} →</a>}</span>
+      </div>
+    </div>
+
+    <script>
+      const KEY = 'ceo-agent-kit-progress';
+      const btn = document.querySelector<HTMLButtonElement>('.mark-done')!;
+      const slug = btn.dataset.slug!;
+      const read = (): Record<string, boolean> => {
+        try {
+          return JSON.parse(localStorage.getItem(KEY) ?? '{}');
+        } catch {
+          return {};
+        }
+      };
+      const paint = () => {
+        const done = !!read()[slug];
+        btn.classList.toggle('is-done', done);
+        btn.textContent = done ? 'Виконано ✓' : 'Позначити виконаним';
+      };
+      btn.addEventListener('click', () => {
+        const state = read();
+        state[slug] = !state[slug];
+        localStorage.setItem(KEY, JSON.stringify(state));
+        paint();
+      });
+      paint();
+    </script>
+  </body>
+</html>
