@@ -8,8 +8,8 @@
 
 ## Що зробити руками
 
-1. Якщо домену ще немає: купіть його. Найпростіше прямо в Cloudflare: Dash → Domain Registration → Register domain. Підійде і будь-який інший реєстратор.
-2. Якщо домен куплено не в Cloudflare: у [dash.cloudflare.com](https://dash.cloudflare.com) → Add a domain → введіть домен → оберіть план Free → Cloudflare покаже два NS-сервери → у панелі свого реєстратора замініть NS-записи на ці два. Зміна NS може тривати до доби.
+1. Якщо домену ще немає: купіть його на [GoDaddy](https://www.godaddy.com/) (з модуля 00). Підійде і будь-який інший реєстратор, зокрема сам Cloudflare.
+2. У [dash.cloudflare.com](https://dash.cloudflare.com) → Add a domain → введіть домен → оберіть план Free → Cloudflare покаже два NS-сервери → у панелі GoDaddy (My Domains → DNS → Nameservers) замініть NS-записи на ці два. Зміна NS може тривати до доби.
 3. Створіть API-токен для агента: My Profile → API Tokens → Create Token → шаблон Edit zone DNS.
    - Zone Resources: Include → Specific zone → ваш домен.
    - Permissions: Zone / DNS / Edit і Zone / Zone / Read.

@@ -3,12 +3,15 @@ export type SignupLink = { label: string; href: string };
 /** Quick "create an account here" links per module slug, shown on the checklist. */
 export const SIGNUP_LINKS: Record<string, SignupLink[]> = {
   "00-accounts": [
-    { label: "ChatGPT Plus", href: "https://chatgpt.com/" },
-    { label: "Claude Pro", href: "https://claude.ai/" },
-    { label: "GitHub", href: "https://github.com/signup" },
-    { label: "Hetzner", href: "https://console.hetzner.com/" },
-    { label: "Cloudflare", href: "https://dash.cloudflare.com/sign-up" },
-    { label: "1Password", href: "https://1password.com/" },
+    { label: "ChatGPT · $20", href: "https://chatgpt.com/" },
+    { label: "Claude · $20/100", href: "https://claude.ai/" },
+    { label: "1Password · $5", href: "https://1password.com/" },
+    { label: "Hetzner · CX33", href: "https://www.hetzner.com/" },
+    { label: "GoDaddy · домен", href: "https://www.godaddy.com/" },
+    { label: "Cloudflare · free", href: "https://www.cloudflare.com/" },
+    { label: "Tailscale · free", href: "https://tailscale.com/" },
+    { label: "Vercel · free", href: "https://vercel.com/" },
+    { label: "GitHub · free", href: "https://github.com/" },
     { label: "Telegram", href: "https://telegram.org/" },
   ],
   "01-hetzner": [
@@ -26,6 +29,7 @@ export const SIGNUP_LINKS: Record<string, SignupLink[]> = {
     },
   ],
   "04-domain-cloudflare": [
+    { label: "GoDaddy", href: "https://www.godaddy.com/" },
     { label: "Cloudflare", href: "https://dash.cloudflare.com/sign-up" },
     {
       label: "API Tokens",
