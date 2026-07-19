@@ -44,7 +44,7 @@
 
 ## Скільки це коштує
 
-Приблизно 45-55 доларів на місяць: ChatGPT Plus (20), Claude Pro (20, для щоденної роботи краще Max за 100), Hetzner CX33 (близько 8), 1Password (5). Домен на GoDaddy раз на рік. Cloudflare, Tailscale, Vercel, GitHub, Obsidian, Zed і Telegram безкоштовні.
+Приблизно 50-60 доларів на місяць: ChatGPT Plus (20), Claude Pro (20, для щоденної роботи краще Max за 100), Hetzner CX33 (близько 8), 1Password (5), Obsidian Sync (4). Домен на GoDaddy раз на рік. Cloudflare, Tailscale, Vercel, GitHub, Zed і Telegram безкоштовні.
 
 ## Звідки агенти і скіли
 

@@ -12,6 +12,7 @@ export const SIGNUP_LINKS: Record<string, SignupLink[]> = {
     { label: "Tailscale · free", href: "https://tailscale.com/" },
     { label: "Vercel · free", href: "https://vercel.com/" },
     { label: "GitHub · free", href: "https://github.com/" },
+    { label: "Obsidian Sync · $4", href: "https://obsidian.md/sync" },
     { label: "Telegram", href: "https://telegram.org/" },
   ],
   "01-hetzner": [
@@ -49,6 +50,7 @@ export const SIGNUP_LINKS: Record<string, SignupLink[]> = {
   ],
   "08-obsidian": [
     { label: "Obsidian", href: "https://obsidian.md/download" },
+    { label: "Obsidian Sync", href: "https://obsidian.md/sync" },
     { label: "Нове репо", href: "https://github.com/new" },
   ],
   "09-zed": [{ label: "Zed", href: "https://zed.dev/download" }],
