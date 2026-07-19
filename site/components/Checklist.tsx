@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import type { ModuleMeta } from "@/lib/modules";
+import { SIGNUP_LINKS } from "@/lib/signup-links";
 import { FALLBACK_ICON, MODULE_ICONS } from "@/components/icons";
 
 const KEY = "ceo-agent-kit-progress";
@@ -77,6 +78,21 @@ export default function Checklist({ modules }: { modules: ModuleMeta[] }) {
                   <span className="mod-summary" style={{ display: "block" }}>
                     {m.summary}
                   </span>
+                  {SIGNUP_LINKS[m.slug] && (
+                    <span className="mod-links">
+                      {SIGNUP_LINKS[m.slug].map((l) => (
+                        <a
+                          key={l.href + l.label}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {l.label}
+                          <ExternalLink size={11} aria-hidden />
+                        </a>
+                      ))}
+                    </span>
+                  )}
                 </span>
                 <ArrowRight className="mod-arrow" size={17} aria-hidden />
               </li>

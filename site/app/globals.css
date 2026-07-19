@@ -1260,3 +1260,28 @@ h2.sec-title {
     transition: none !important;
   }
 }
+
+/* checklist signup link chips */
+.mod-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.mod-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+.mod-links a:hover {
+  color: var(--emerald);
+  border-color: var(--emerald-dim);
+  text-decoration: none;
+}
