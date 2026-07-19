@@ -7,6 +7,7 @@ import {
   Github,
   House,
   ListChecks,
+  Rocket,
   Terminal,
 } from "lucide-react";
 
@@ -26,6 +27,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: "kit",
     label: "Кіт",
     items: [
+      { href: "/start/", label: "Швидкий старт", icon: Rocket },
       { href: "/checklist/", label: "Чеклист", icon: ListChecks },
       { href: "/use-cases/", label: "Юзкейси", icon: Lightbulb },
       { href: "/docs/", label: "Документація", icon: BookOpenText },

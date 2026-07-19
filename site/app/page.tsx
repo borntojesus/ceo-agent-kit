@@ -26,8 +26,8 @@ export default function Home() {
             <Link href="/checklist/" className="btn btn-primary">
               Почати з чеклиста <ArrowRight size={17} aria-hidden />
             </Link>
-            <Link href="/prompts/" className="btn btn-ghost">
-              <Terminal size={17} aria-hidden /> Промпти для Claude
+            <Link href="/start/" className="btn btn-ghost">
+              <Terminal size={17} aria-hidden /> Швидкий старт: один промпт
             </Link>
           </div>
 
