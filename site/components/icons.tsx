@@ -1,5 +1,9 @@
 import {
   BellRing,
+  Building2,
+  Handshake,
+  Target,
+  Users,
   BookMarked,
   BookOpenText,
   Brain,
@@ -29,6 +33,10 @@ import {
 /** feature / use-case icons, keyed from lib/content.ts */
 export const CONTENT_ICONS: Record<string, LucideIcon> = {
   shield: ShieldCheck,
+  handshake: Handshake,
+  building: Building2,
+  target: Target,
+  users: Users,
   send: Send,
   mail: Mail,
   brain: Brain,
