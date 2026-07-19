@@ -1,28 +1,31 @@
-# Prompt: join tailnet and close public access
+# Prompt: join tailnet and close public access (Proxmox host)
 
-Paste this entire file into Claude Code running as user `agent` on the VPS (module 01 completed).
+Paste this entire file into Claude Code running as root on the Proxmox host (module 01 completed). The owner is present and can click auth links.
 
 ---
 
-You are putting this VPS into the owner's Tailscale tailnet and removing all public network exposure. The owner is present and can click auth links. Work step by step.
+You are putting the Proxmox host into the owner's Tailscale tailnet, publishing the internal container network through it, and removing all public exposure. Work step by step.
 
-1. **Install Tailscale.**
+1. **Install Tailscale on the host.**
    - `curl -fsSL https://tailscale.com/install.sh | sh`
+   - Enable IP forwarding (`net.ipv4.ip_forward=1` persisted) — required for subnet routing.
 
-2. **Join the tailnet with Tailscale SSH enabled.**
-   - Run `sudo tailscale up --ssh`.
-   - Print the auth URL it produces and tell the owner: "Open this link and approve the device." Wait for confirmation.
-   - Verify with `tailscale status` and note the tailnet IP (100.x.y.z) and MagicDNS name.
+2. **Join with SSH and the container subnet advertised.**
+   - `tailscale up --ssh --advertise-routes=10.10.10.0/24`
+   - Print the auth URL; the owner opens it and approves the device. Then tell them: у [консолі Tailscale](https://login.tailscale.com/admin/machines) відкрийте машину `agent-host` → Edit route settings → увімкніть маршрут `10.10.10.0/24`. Wait for confirmation.
+   - Verify: `tailscale status`, note the MagicDNS name.
 
-3. **Verify Tailscale SSH works before closing anything.**
-   - Ask the owner to run `ssh agent@<magicdns-name>` from their laptop and confirm it works. Do not proceed until they confirm.
+3. **Verify everything works through the tailnet BEFORE closing anything.** Ask the owner to check from their laptop:
+   - `ssh root@agent-host` connects;
+   - `https://agent-host:8006` opens the Proxmox web UI (self-signed certificate warning is expected, accept it);
+   - `ssh agent@10.10.10.100` reaches the agent container.
+     Do not proceed until all three are confirmed.
 
 4. **Close public SSH.**
-   - `sudo ufw delete allow OpenSSH`
-   - `sudo ufw reload`
+   - `ufw delete allow OpenSSH && ufw reload`
 
 5. **Prove there is no public surface.**
-   - Show `sudo ufw status verbose` (expect: no allow rules for incoming).
-   - Show `sudo ss -tlnp` and explain each listener: everything must be bound to localhost, the tailnet interface, or be tailscaled itself.
+   - `ufw status verbose`: no allow rules for incoming.
+   - `ss -tlnp`: every listener bound to localhost, vmbr1, or tailscale0; nothing on the public interface. Explain each line to the owner.
 
-6. **Report.** Summary: tailnet name and IP, MagicDNS hostname, ufw state, confirmation that the only way in is via the owner's tailnet. Remind the owner: from now on connect with `ssh agent@<magicdns-name>`.
+6. **Report.** Tailnet name, MagicDNS hostname, subnet route status, what is reachable from the owner's devices (host SSH, Proxmox UI :8006, agent container, майбутні контейнери 10.10.10.x), and the reminder: заходьте на сервер тільки як `ssh root@agent-host`, в агента як `ssh agent@10.10.10.100`.

@@ -271,7 +271,7 @@ export const SEARCH_API_OPTIONS: SearchApiOption[] = [
     name: "SearXNG (self-hosted)",
     price: "Безкоштовно",
     privacy: "Максимальна: запити йдуть з вашого сервера, без акаунта і токенів",
-    note: "Один Docker-контейнер на тому самому VPS, JSON API. Приватний дефолт для повсякденних запитів. Нюанс 2026: Google блокує запити з датацентр-IP, тому движки налаштовуємо на Brave, Mojeek, Startpage і Qwant.",
+    note: "Окремий контейнер на тому ж Proxmox-сервері (готовий промпт searxng-lxc.md у кіті), JSON API. Приватний дефолт для повсякденних запитів. Нюанс 2026: Google блокує запити з датацентр-IP, тому движки налаштовуємо на Brave, Mojeek, Startpage і Qwant.",
     recommended: true,
   },
   {
