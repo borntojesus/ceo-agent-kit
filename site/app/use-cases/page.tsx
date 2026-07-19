@@ -18,8 +18,10 @@ export default function UseCasesPage() {
           <div className="kicker">Юзкейси</div>
           <h1>Що агент робить на практиці</h1>
           <p className="lead">
-            Два наскрізні сценарії з переліком агентів, скілів та інтеграцій, і
-            блок про пошуковий API, який живить будь-який ресерч.
+            Десять сценаріїв з переліком агентів, скілів та інтеграцій: шість
+            уже працюють у кіті, чотири позначені «скоро» і зʼявляться
+            наступними модулями. Наприкінці блок про пошуковий API, який живить
+            будь-який ресерч.
           </p>
         </div>
 
@@ -32,6 +34,9 @@ export default function UseCasesPage() {
                   <Icon size={19} aria-hidden />
                 </span>
                 <h2>{uc.title}</h2>
+                {uc.status === "soon" && (
+                  <span className="soon-badge">скоро</span>
+                )}
               </div>
               <p className="uc-scenario">{uc.scenario}</p>
 

@@ -1459,3 +1459,16 @@ h2.sec-title {
     grid-template-columns: 1fr;
   }
 }
+
+.soon-badge {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass);
+  border: 1px solid color-mix(in srgb, var(--brass) 45%, transparent);
+  border-radius: 999px;
+  padding: 3px 11px;
+  flex-shrink: 0;
+}
