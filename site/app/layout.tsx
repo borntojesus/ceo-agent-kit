@@ -35,9 +35,16 @@ export default function RootLayout({
   return (
     <html
       lang="uk"
+      suppressHydrationWarning
       className={`${piazzolla.variable} ${golos.variable} ${jbmono.variable}`}
     >
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}",
+          }}
+        />
         <AppShell>
           {children}
           <footer className="footer">

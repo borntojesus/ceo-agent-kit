@@ -10,6 +10,7 @@ import {
   PanelLeftOpen,
   X,
 } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import {
   findTrail,
   HOME,
@@ -212,6 +213,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             )}
             <b>{trail.item?.label ?? "Огляд"}</b>
           </nav>
+          <ThemeToggle />
           <Link href="/checklist/" className="top-cta">
             Почати
           </Link>

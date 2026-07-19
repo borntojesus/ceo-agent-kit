@@ -16,6 +16,38 @@
   --font-display: var(--piazzolla), Georgia, serif;
   --font-body: var(--golos), system-ui, sans-serif;
   --font-mono: var(--jbmono), ui-monospace, monospace;
+  --text-soft: #cfd6d0;
+  --on-accent: #0a0e0c;
+  --msg-me-text: #eafff5;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f2ec;
+  --bg-raise: #edeae2;
+  --surface: #ffffff;
+  --surface-2: #f0ede5;
+  --line: #d9d4c7;
+  --line-soft: #e4e0d5;
+  --ivory: #1c231e;
+  --muted: #58635b;
+  --faint: #87908a;
+  --emerald: #0e7a55;
+  --emerald-dim: #bfe2d3;
+  --brass: #8f6f33;
+  --ink: #10150f;
+  --text-soft: #333b35;
+  --on-accent: #ffffff;
+  --msg-me-text: #0d3b2a;
+  --sidebar: #eceae1;
+}
+
+:root[data-theme="light"] body::after {
+  opacity: 0.25;
+}
+
+:root[data-theme="light"] .sb-brand .dot,
+:root[data-theme="light"] .wordmark .dot {
+  box-shadow: 0 0 6px color-mix(in srgb, var(--emerald) 50%, transparent);
 }
 
 * {
@@ -377,9 +409,8 @@ a:hover {
 }
 
 .top-cta {
-  margin-left: auto;
   background: var(--emerald);
-  color: var(--ink);
+  color: var(--on-accent);
   font-weight: 600;
   font-size: 14px;
   padding: 7px 16px;
@@ -486,7 +517,7 @@ h1.display em {
 
 .btn-primary {
   background: var(--emerald);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 .btn-primary:hover {
@@ -735,7 +766,7 @@ h2.sec-title {
 
 .msg.me {
   background: var(--emerald-dim);
-  color: #eafff5;
+  color: var(--msg-me-text);
   margin-left: auto;
   border-bottom-right-radius: 4px;
 }
@@ -951,7 +982,7 @@ h2.sec-title {
 
 .prose p,
 .prose li {
-  color: #cfd6d0;
+  color: var(--text-soft);
 }
 
 .prose li {
@@ -1015,7 +1046,7 @@ h2.sec-title {
 
 .mark-done.is-done {
   background: var(--emerald);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 .pager {
@@ -1342,7 +1373,7 @@ h2.sec-title {
 .uc-steps {
   margin: 0;
   padding-left: 20px;
-  color: #cfd6d0;
+  color: var(--text-soft);
 }
 
 .uc-steps li {
@@ -1442,7 +1473,7 @@ h2.sec-title {
   margin-left: 8px;
   font-size: 10.5px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--on-accent);
   background: var(--emerald);
   border-radius: 999px;
   padding: 2px 8px;
@@ -1471,4 +1502,24 @@ h2.sec-title {
   border-radius: 999px;
   padding: 3px 11px;
   flex-shrink: 0;
+}
+
+/* theme toggle */
+.theme-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--emerald);
+  border-color: var(--emerald-dim);
 }
