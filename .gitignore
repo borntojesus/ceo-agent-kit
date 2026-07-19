@@ -5,3 +5,7 @@ dist/
 site/deploy.sh
 .github/workflows/deploy-site.yml
 .claude/
+.next/
+out/
+next-env.d.ts
+tsconfig.tsbuildinfo

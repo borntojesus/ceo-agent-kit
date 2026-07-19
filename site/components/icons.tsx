@@ -1,0 +1,68 @@
+import {
+  BellRing,
+  BookMarked,
+  BookOpenText,
+  Brain,
+  CalendarClock,
+  ChartNoAxesColumn,
+  Clock,
+  Cloud,
+  CreditCard,
+  FileCode2,
+  Globe,
+  KeyRound,
+  Landmark,
+  Mail,
+  PenLine,
+  Rocket,
+  Search,
+  Send,
+  Server,
+  ShieldCheck,
+  Sunrise,
+  Terminal,
+  Vault,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
+
+/** feature / use-case icons, keyed from lib/content.ts */
+export const CONTENT_ICONS: Record<string, LucideIcon> = {
+  shield: ShieldCheck,
+  send: Send,
+  mail: Mail,
+  brain: Brain,
+  rocket: Rocket,
+  clock: Clock,
+  sunrise: Sunrise,
+  alert: BellRing,
+  search: Search,
+  wrench: Wrench,
+  book: BookMarked,
+  chart: ChartNoAxesColumn,
+};
+
+/** per-module icons, keyed by module slug */
+export const MODULE_ICONS: Record<string, LucideIcon> = {
+  "00-accounts": CreditCard,
+  "01-hetzner": Server,
+  "02-tailscale": ShieldCheck,
+  "03-1password": KeyRound,
+  "04-domain-cloudflare": Globe,
+  "05-agent-runtime": Terminal,
+  "06-telegram": Send,
+  "07-email": Mail,
+  "08-obsidian": Brain,
+  "09-zed": PenLine,
+  "10-cron": CalendarClock,
+  "11-vibe-coding": Rocket,
+  "12-agents-skills": BookOpenText,
+  "13-security-backups": Vault,
+};
+
+export const FALLBACK_ICON: LucideIcon = Landmark;
+export const GLOSSARY_GROUP_ICONS: Record<string, LucideIcon> = {
+  "Сервер і мережа": Server,
+  "AI та агент": Brain,
+  Інструменти: FileCode2,
+};
