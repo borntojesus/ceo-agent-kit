@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Piazzolla, Golos_Text, JetBrains_Mono } from "next/font/google";
-import Link from "next/link";
-import {
-  BookOpenText,
-  CalendarCheck,
-  Github,
-  ListChecks,
-  Terminal,
-} from "lucide-react";
+import { CalendarCheck } from "lucide-react";
+import AppShell from "@/components/app-shell";
 import "./globals.css";
 
 const piazzolla = Piazzolla({
@@ -44,61 +38,25 @@ export default function RootLayout({
       className={`${piazzolla.variable} ${golos.variable} ${jbmono.variable}`}
     >
       <body>
-        <header className="topbar">
-          <div className="topbar-in">
-            <Link href="/" className="wordmark">
-              <span className="dot" aria-hidden />
-              CEO Agent Kit
-            </Link>
-            <nav className="nav" aria-label="Головна навігація">
-              <Link href="/checklist/">
-                <ListChecks size={16} aria-hidden />
-                <span>Чеклист</span>
-              </Link>
-              <Link href="/docs/">
-                <BookOpenText size={16} aria-hidden />
-                <span>Документація</span>
-              </Link>
-              <Link href="/prompts/">
-                <Terminal size={16} aria-hidden />
-                <span>Промпти</span>
-              </Link>
-              <Link href="/glossary/">
-                <BookOpenText size={16} aria-hidden />
-                <span>Глосарій</span>
-              </Link>
-              <a
-                href="https://github.com/borntojesus/ceo-agent-kit"
-                aria-label="GitHub"
-              >
-                <Github size={16} aria-hidden />
-                <span>GitHub</span>
+        <AppShell>
+          {children}
+          <footer className="footer">
+            <div className="wrap">
+              <span>CEO Agent Kit</span>
+              <a href="https://github.com/borntojesus/ceo-agent-kit">GitHub</a>
+              <a href="https://github.com/borntojesus/claude-kit">claude-kit</a>
+              <a href="https://antonyuk.org">Дмитро Антонюк</a>
+              <a href="https://cal.antonyuk.org/dmytro/scoping-call">
+                <CalendarCheck
+                  size={14}
+                  aria-hidden
+                  style={{ verticalAlign: "-2px", marginRight: 6 }}
+                />
+                Забронювати дзвінок
               </a>
-              <Link href="/checklist/" className="cta">
-                Почати
-              </Link>
-            </nav>
-          </div>
-        </header>
-
-        {children}
-
-        <footer className="footer">
-          <div className="wrap">
-            <span>CEO Agent Kit</span>
-            <a href="https://github.com/borntojesus/ceo-agent-kit">GitHub</a>
-            <a href="https://github.com/borntojesus/claude-kit">claude-kit</a>
-            <a href="https://antonyuk.org">Дмитро Антонюк</a>
-            <a href="https://cal.antonyuk.org/dmytro/scoping-call">
-              <CalendarCheck
-                size={14}
-                aria-hidden
-                style={{ verticalAlign: "-2px", marginRight: 6 }}
-              />
-              Забронювати дзвінок
-            </a>
-          </div>
-        </footer>
+            </div>
+          </footer>
+        </AppShell>
       </body>
     </html>
   );
